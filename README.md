@@ -156,8 +156,7 @@ while value < 100:
     print(value)
 ```
 #### Результат:
-Бесконечный цикл:
-![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/8.1(2).png)
+![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/8.1.(2).png)
 Конечный цикл:
 ![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/8.1.png)
 #### Вывод: В данном коде мы использовали цикл while для изменения значения переменной value на основе различных условий. 
