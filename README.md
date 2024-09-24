@@ -197,23 +197,6 @@ else:
 #### Результат:
 ![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/10.1.png)
 #### Вывод: В этой программе flag используется как индикатор, чтобы определить, есть ли нечетные числа в исходном массиве even_array. Если хотя бы одно нечетное число найдено, то flag устанавливается в True, и это значение проверяется в конце программы.
-## Задание №10
-### Напишите программу с использованием flag, которое будет определять есть ли нечетное число в массиве. В данной задаче flag выступает в роли индикатора встречи нечетного числа в исходном массиве, четных чисел.
-#### Выполнение:
-```python
-even_array =  [2, 4, 6, 8, 9]
-flag = False
-for value in even_array:
-    if value % 2 == 1:
-        flag = True
-
-if flag is True:
-    print('В массиве есть нечетное число')
-else:
-    print('В массиве все числа четные')
-```
-#### Результат:
-![image](https://github.com/legendarykk/Programmnaya_Inzheneriya/assets/146570109/1c37a60a-0f10-42ce-8772-c17af9cca912)
 
 ## Самостоятельная работа №1
 ## Задание №1
@@ -227,7 +210,7 @@ for i in range(2):
 print(value)
 ```
 #### Результат:
-![image](https://github.com/legendarykk/Programmnaya_Inzheneriya/assets/146570109/069b5880-bed0-49c5-b462-c7e11891057b)
+![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/1.2.png)
 
 #### Вывод: В данном коде цикл 'for' дважды прогоняет число 1 через две математические операции, *5 и +1, после чего подает результат, равный 31, на вывод.
 
@@ -240,7 +223,7 @@ for i in range(len(sentence)-1, -1, -1):
     print(sentence[i])
 ```
 #### Результат:
-![image](https://github.com/legendarykk/Programmnaya_Inzheneriya/assets/146570109/20c685ec-4291-44af-a01b-23847335f834)
+![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/2.2.png)
 
 #### Вывод: В данном коде, с помощью отрицательного щшага, по одной выводим буквы из заданного предложения в обратном направлении.
 
@@ -260,13 +243,7 @@ elif 6 <= number <= 10:
 ```
 #### Результат:
 Вариант 1:
-![image](https://github.com/legendarykk/Programmnaya_Inzheneriya/assets/146570109/c9299d40-aa87-45dd-be2b-c93b4de801d8)
-Вариант 2:
-![image](https://github.com/legendarykk/Programmnaya_Inzheneriya/assets/146570109/24cd70ec-97c5-4f4f-b101-e864abe38aee)
-Вариант 3:
-![image](https://github.com/legendarykk/Programmnaya_Inzheneriya/assets/146570109/9471101a-7c61-4182-b2d3-7f29ab779ffd)
-Вариант 4:
-![image](https://github.com/legendarykk/Programmnaya_Inzheneriya/assets/146570109/754e486c-4949-4813-8785-6eebcdb21b93)
+![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/3.2.png)
 
 #### Вывод: После получения введенного числа, код проверяет выполнения первого условия (число должно входить в диапазон от 0 до 10), после этого, код сверяет введенное число с тремя диапазонами по очереди и выводит итоговый результат в виде текста.
 
@@ -291,14 +268,14 @@ if sentence3.endswith('end') == True:
 else: print("Предложение не заканчивается на End")
 ```
 #### Результат:
-![image](https://github.com/legendarykk/Programmnaya_Inzheneriya/assets/146570109/835dcf0e-d643-4437-a207-9971b80bfaf4)
+![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/4.2.png)
 
 #### Вывод: Код, после получения введенного предложения, сначала находит его длину с помощью метода 'len'. Затем переводит его в нижний регистр посредством метода 'lower' и выводит его в консоль. Далее считает количество каждой гласной с помощью метода 'count', складывает каждое полученное число и выводит итог в консоль. На следующем шаге с помощью метода 'replace' заменяет каждое слово 'ugly' на слово 'beauty' и выводит в консоль измененное предложение. После этого запускает проверку наличия в начале предложения слова 'The' и в конце слова 'End'. В результате выводит два итога своей проверки.
 ## Задание №5
 ### Составьте программу, результатом которой будет данный вывод в консоль.
-![image](https://github.com/legendarykk/Programmnaya_Inzheneriya/assets/146570109/b49f6215-3d15-4bcd-860d-85ebd98aad49)
+
 ### Программу нужно составить из данных строк кода:
-![image](https://github.com/legendarykk/Programmnaya_Inzheneriya/assets/146570109/a9356c2b-06a1-4654-97f6-4f48c0f8308a)
+![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/5%20задание.png)
 ### Строки кода можно использовать только один раз. Не обязательно использовать все строки кода.
 #### Выполнение:
 ```python
@@ -315,6 +292,9 @@ while ' world' not in string:
     counter += 1
 ```
 #### Результат:
-![image](https://github.com/legendarykk/Programmnaya_Inzheneriya/assets/146570109/e94f769b-f0e7-412d-8cfc-8fd2a9840f41)
+![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/5.2.png)
 
 #### Вывод: Мы объявляем строковую переменную с именем "string", массив чисел под названием "values" и устанавливаем счетчик "counter" равным 0. Затем, в рамках цикла "while", выполняется следующий процесс: пока строка "string" не содержит слово "world" и значение счетчика "counter" меньше 10, программа выводит сначала "hello world" на одной строке, а затем "hello" на следующей строке. Когда значение счетчика достигнет 10, будет выведена фраза "hello world", а "hello" больше не будет выводиться, после чего цикл завершит свою работу.
+
+## Общий вывод
+### Ряд вышеперечисленных заданий поспособствовал повторению одних из самых основных операций и функций языка Python, что помогает глубже изучить язык и узнать больше о его возможностях.
