@@ -230,8 +230,12 @@ if __name__ == "__main__":
   result_tuple = tuple_remove(tuple(input_list))
   print(result_tuple)
 ```
-#### Результат:
-![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema6.10.png)
+#### Результат 1:
+![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema6.10(1).png)
+#### Результат 2:
+![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema6.10(2).png)
+#### Результат 3:
+![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema6.10(3).png)
 
 #### Вывод: Написание этого кода позволяет закрепить знания о кортежах, циклах for, условиях if, операторах in и о преобразовании между разными структурами данных в Python.
 
