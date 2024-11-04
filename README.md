@@ -164,23 +164,6 @@ greet(john)
 1. Создайте класс Tomato
 2. Создайте статическое свойство states, которое будет содержать все стадии созревания помидора
 3. Создайте метод init(), внутри которого будут определены два динамических свойства: _index (передается параметром) и _state
-#### Выполнение:
-```python
-class Tomato:
-    def __init__(self, index):
-        self. index = index
-        self. ripeness = "отсутствует"
-    def grow(self):
-        if self. ripeness == "отсутствует":
-            self. ripeness = "цветение"
-        elif self. ripeness == "цветение":
-            self. ripeness = "зеленый"
-        elif self. ripeness == "зеленый":
-            self. ripeness = "красный"
-def is_ripe(self):
-    return self. ripeness == "красный"
-```
-![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema9.6.png)
 
 Класс TomatoBush:
 1. Создайте класс TomatoBush
@@ -188,25 +171,7 @@ def is_ripe(self):
 3. Создайте метод grow_all(), который будет переводить все объекты из списка томатов на следующий этап созревания
 4. Создайте метод all_are_ripe(), который будет возвращать True, если все томаты из списка стали спелыми.
 5. Создайте метод give_away_all(), который будет чистить список томатов после сбора урожая Класс Gardener
-#### Выполнение:
-```python
-class TomatoBush:
-    def __init__(self, num_tomatoes):
-        self.tomatoes = [Tomato(index) for index in range(1, num_tomatoes + 1)]
-
-    def grow_all(self):
-        for tomato in self.tomatoes:
-            tomato.grow()
-
-    def all_are_ripe(self):
-        return all(tomato.is_ripe() for tomato in self.tomatoes)
-
-    def give_away_all(self):
-        self.tomatoes = []
-```
-#### Результат:
-![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema9.7.png)
-
+   
 Класс Gardener:
 1. Создайте класс Gardener
 2. Создайте метод init (), внутри которого будут определены два динамических свойства: name (передается параметром, является публичным) и _plant (принимает объект класса TomatoBush). После написания этого блока кода в комментарии к нему укажите какими являются эти два свойства
@@ -215,8 +180,47 @@ class TomatoBush:
 5. Создайте статический метод knowledge_base(), который выведет в консоль справку по садоводству
 #### Выполнение:
 ```python
+class Tomato:
+# Словарь, описывающий состояния помидора
+    states = {
+        0: "отсутствует",
+        1: "цветение",
+        2: "зеленый",
+        3: "красный"
+    }
+
+    def __init__(self, index):
+ # Инициализация экземпляра помидора с индексом и начальным состоянием
+        self._index = index
+        self._state = 0
+
+    def grow(self):
+# Увеличивает состояние помидора на один, если оно меньше трех
+        if self._state < 3:
+            self._state += 1
+
+    def is_ripe(self):
+        return self._state == 3
+
+
+class TomatoBush:
+    def __init__(self, num_tomatoes):
+# Инициализация куста помидоров с заданным количеством помидоров
+        self.tomatoes = [Tomato(index) for index in range(1, num_tomatoes + 1)]
+
+    def grow_all(self): # Выращивает все помидоры на кусте
+        for tomato in self.tomatoes:
+            tomato.grow()
+
+    def all_are_ripe(self):  # Проверяет, все ли помидоры созрели
+        return all(tomato.is_ripe() for tomato in self.tomatoes)
+
+    def give_away_all(self):  # Удаляет все помидоры с куста (симулирует сбор урожая)
+        self.tomatoes = []
+
+
 class Gardener:
-    def __init__(self, name, plant):
+    def __init__(self, name, plant): # Инициализация садовода с именем и растением
         self.name = name
         self._plant = plant
 
@@ -229,13 +233,7 @@ class Gardener:
             self._plant.give_away_all()
         else:
             print("Помидоры не созрели. Продолжай выращивать.")
-```
-#### Результат:
-![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema9.8.png)
 
-Вызовите справку по садоводству
-#### Выполнение:
-```python
     @staticmethod
     def knowledge_base():
         print("База знаний садовода:")
@@ -243,11 +241,14 @@ class Gardener:
         print("- Нужно больше солнечнного света.")
         print("- ИСпользуй удобрение для улучшение почвы.")
 
-Gardener.knowledge_base()
+Gardener.knowledge_base() # Вывод базы знаний садовода
 ```
 #### Результат:
+![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema9.6.png)
+![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema9.7.png)
+![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema9.8.png)
 ![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema9.9.png)
-#### Вывод:
+#### Вывод: В данном коде реализована система для моделирования процесса выращивания помидоров с использованием классов Tomato, TomatoBush и Gardener. Класс Tomato описывает состояние помидора, включая его стадии роста. Класс TomatoBush управляет коллекцией помидоров и предоставляет методы для их роста и проверки зрелости. Класс Gardener представляет садовода, который может ухаживать за растениями и собирать урожай, если помидоры созрели. Метод knowledge_base в классе Gardener выводит полезные советы по садоводству, что делает программу не только функциональной, но и образовательной. Вызов Gardener.knowledge_base() демонстрирует, как можно предоставить пользователю информацию о правильном уходе за растениями, что является важной частью садоводства.
 
 ## Задание №2
 ### Самостоятельно создайте атрибуты и методы для ранее созданного класса. Они должны отличаться, от тех, что указаны в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
