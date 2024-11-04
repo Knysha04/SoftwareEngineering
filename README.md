@@ -180,8 +180,7 @@ greet(john)
 5. Создайте статический метод knowledge_base(), который выведет в консоль справку по садоводству
 #### Выполнение:
 ```python
-class Tomato:
-# Словарь, описывающий состояния помидора
+class Tomato: # Словарь, описывающий состояния помидора
     states = {
         0: "отсутствует",
         1: "цветение",
@@ -189,13 +188,11 @@ class Tomato:
         3: "красный"
     }
 
-    def __init__(self, index):
- # Инициализация экземпляра помидора с индексом и начальным состоянием
+    def __init__(self, index): # Инициализация экземпляра помидора с индексом и начальным состоянием
         self._index = index
         self._state = 0
 
-    def grow(self):
-# Увеличивает состояние помидора на один, если оно меньше трех
+    def grow(self): # Увеличивает состояние помидора на один, если оно меньше трех
         if self._state < 3:
             self._state += 1
 
@@ -204,8 +201,7 @@ class Tomato:
 
 
 class TomatoBush:
-    def __init__(self, num_tomatoes):
-# Инициализация куста помидоров с заданным количеством помидоров
+    def __init__(self, num_tomatoes): # Инициализация куста помидоров с заданным количеством помидоров
         self.tomatoes = [Tomato(index) for index in range(1, num_tomatoes + 1)]
 
     def grow_all(self): # Выращивает все помидоры на кусте
@@ -251,167 +247,317 @@ Gardener.knowledge_base() # Вывод базы знаний садовода
 #### Вывод: В данном коде реализована система для моделирования процесса выращивания помидоров с использованием классов Tomato, TomatoBush и Gardener. Класс Tomato описывает состояние помидора, включая его стадии роста. Класс TomatoBush управляет коллекцией помидоров и предоставляет методы для их роста и проверки зрелости. Класс Gardener представляет садовода, который может ухаживать за растениями и собирать урожай, если помидоры созрели. Метод knowledge_base в классе Gardener выводит полезные советы по садоводству, что делает программу не только функциональной, но и образовательной. Вызов Gardener.knowledge_base() демонстрирует, как можно предоставить пользователю информацию о правильном уходе за растениями, что является важной частью садоводства.
 
 ## Задание №2
-### Самостоятельно создайте атрибуты и методы для ранее созданного класса. Они должны отличаться, от тех, что указаны в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
+### Создайте объекты классов TomatoBush и Gardener
+#### Выполнение:
 #### Выполнение:
 ```python
-class Book:
-    def __init__(self, title, author):
-        self.title = title
-        self.author = author
+class Tomato: # Словарь, описывающий состояния помидора
+    states = {
+        0: "отсутствует",
+        1: "цветение",
+        2: "зеленый",
+        3: "красный"
+    }
 
-    def info(self):
-        print(f"Book Title: {self.title}")
-        print(f"Author: {self.author}")
+    def __init__(self, index): # Инициализация экземпляра помидора с индексом и начальным состоянием
+        self._index = index
+        self._state = 0
 
-my_book = Book("Anna Carenina", "Tolstoi")
+    def grow(self): # Увеличивает состояние помидора на один, если оно меньше трех
+        if self._state < 3:
+            self._state += 1
 
-my_book.info()
+    def is_ripe(self):
+        return self._state == 3
+
+
+class TomatoBush:
+    def __init__(self, num_tomatoes): # Инициализация куста помидоров с заданным количеством помидоров
+        self.tomatoes = [Tomato(index) for index in range(1, num_tomatoes + 1)]
+
+    def grow_all(self): # Выращивает все помидоры на кусте
+        for tomato in self.tomatoes:
+            tomato.grow()
+
+    def all_are_ripe(self):  # Проверяет, все ли помидоры созрели
+        return all(tomato.is_ripe() for tomato in self.tomatoes)
+
+    def give_away_all(self):  # Удаляет все помидоры с куста (симулирует сбор урожая)
+        self.tomatoes = []
+
+
+class Gardener:
+    def __init__(self, name, plant): # Инициализация садовода с именем и растением
+        self.name = name
+        self._plant = plant
+
+    def work(self):
+        self._plant.grow_all()
+
+    def harvest(self):
+        if self._plant.all_are_ripe():
+            print("Сбор урожая...")
+            self._plant.give_away_all()
+        else:
+            print("Помидоры не созрели. Продолжай выращивать.")
+
+    @staticmethod
+    def knowledge_base():
+        print("База знаний садовода:")
+        print("- Поливай растения регулярно.")
+        print("- Нужно больше солнечнного света.")
+        print("- ИСпользуй удобрение для улучшение почвы.")
+
+# Создаем объекты классов TomatoBush и Gardener
+tomato_bush = TomatoBush(num_tomatoes=5)
+gardener = Gardener(name="John", plant=tomato_bush)
 ```
 #### Результат:
-![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema8.7.png)
+![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema9.10.png)
 
-### Вывод:класс, представляющий книгу, и объект этого класса. В этом примере книга будет иметь атрибуты title (название) и author (автор), а также метод display_info(), который выводит информацию о книге.
+### Вывод: В данном задании созданы объекты классов TomatoBush и Gardener, что позволяет моделировать процесс ухода за кустом помидоров. Класс TomatoBush управляет состоянием помидоров, включая их рост и сбор урожая, в то время как класс Gardener представляет садовода, который ухаживает за растениями и принимает решения о сборе урожая. Эта реализация демонстрирует основные принципы ООП, такие как инкапсуляция и взаимодействие объектов, а также разделяет ответственность между разными классами для упрощения логики программы.
 
 ## Задание №3
-### Самостоятельно реализуйте наследование, продолжая работать с ранее созданным классом. Оно должно отличаться, от того, что указано в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли
+### Используя объект класса Gardener, поухаживайте за кустом с помидорами
 #### Выполнение:
 ```python
-class Book:
-    def __init__(self, title, author):
-        self.title = title
-        self.author = author
+class Tomato: # Словарь, описывающий состояния помидора
+    states = {
+        0: "отсутствует",
+        1: "цветение",
+        2: "зеленый",
+        3: "красный"
+    }
 
-    def info(self):
-        print(f"Book Title: {self.title}")
-        print(f"Author: {self.author}")
+    def __init__(self, index): # Инициализация экземпляра помидора с индексом и начальным состоянием
+        self._index = index
+        self._state = 0
 
-my_book = Book("Anna Carenina", "Tolstoi")
+    def grow(self): # Увеличивает состояние помидора на один, если оно меньше трех
+        if self._state < 3:
+            self._state += 1
+
+    def is_ripe(self):
+        return self._state == 3
 
 
+class TomatoBush:
+    def __init__(self, num_tomatoes): # Инициализация куста помидоров с заданным количеством помидоров
+        self.tomatoes = [Tomato(index) for index in range(1, num_tomatoes + 1)]
 
-class EBook(Book):
-    def __init__(self, title, author, format):
-        super().__init__(title, author)
-        self.format = format
+    def grow_all(self): # Выращивает все помидоры на кусте
+        for tomato in self.tomatoes:
+            tomato.grow()
 
-    def info(self):
-        super().info()
-        print(f"Format: {self.format}")
+    def all_are_ripe(self):  # Проверяет, все ли помидоры созрели
+        return all(tomato.is_ripe() for tomato in self.tomatoes)
 
-my_ebook = EBook("Anna Carenina", "Tolstoi", "PDF")
+    def give_away_all(self):  # Удаляет все помидоры с куста (симулирует сбор урожая)
+        self.tomatoes = []
 
-my_ebook.info()
+
+class Gardener:
+    def __init__(self, name, plant): # Инициализация садовода с именем и растением
+        self.name = name
+        self._plant = plant
+
+    def work(self):
+        self._plant.grow_all()
+
+    def harvest(self):
+        if self._plant.all_are_ripe():
+            print("Сбор урожая...")
+            self._plant.give_away_all()
+        else:
+            print("Помидоры не созрели. Продолжай выращивать.")
+
+    @staticmethod
+    def knowledge_base():
+        print("База знаний садовода:")
+        print("- Поливай растения регулярно.")
+        print("- Нужно больше солнечнного света.")
+        print("- ИСпользуй удобрение для улучшение почвы.")
+
+# Создаем объекты классов TomatoBush и Gardener
+tomato_bush = TomatoBush(num_tomatoes=5)
+gardener = Gardener(name="John", plant=tomato_bush)
+# Ухаживаем за кустом с помидорами
+gardener.work()
+gardener.work()
+gardener.work()
 ```
 #### Результат:
-![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema8.8.png)
+![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema9.11.png)
 
-### Вывод: Использовано наследование для создания нового класса EBook, который расширяет функциональность базового класса Book и добавляет новый атрибут format. Метод info в EBook был переопределен для учета нового атрибута и одновременно использования функциональности родительского класса.
+### Вывод: В процессе выполнения кода создаются объекты TomatoBush и Gardener, после чего садовод "John" ухаживает за кустом три раза, что позволяет помидорам расти. Это демонстрирует взаимодействие между объектами и использование методов для управления состоянием растений. В результате, программа иллюстрирует основные принципы объектно-ориентированного программирования, такие как инкапсуляция и взаимодействие объектов.
 
 ## Задание №4
-### Самостоятельно реализуйте инкапсуляцию, продолжая работать с ранее созданным классом. Она должна отличаться, от того, что указана в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
+### Попробуйте собрать урожай, когда томаты еще не дозрели. Продолжайте ухаживать за ними
 #### Выполнение:
 ```python
-class Book:
-    def __init__(self, title, author):
-        self._title = title
-        self._author = author
+class Tomato: # Словарь, описывающий состояния помидора
+    states = {
+        0: "отсутствует",
+        1: "цветение",
+        2: "зеленый",
+        3: "красный"
+    }
 
-    def get_title(self):
-        return self._title
+    def __init__(self, index): # Инициализация экземпляра помидора с индексом и начальным состоянием
+        self._index = index
+        self._state = 0
 
-    def set_title(self, title):
-        self._title = title
+    def grow(self): # Увеличивает состояние помидора на один, если оно меньше трех
+        if self._state < 3:
+            self._state += 1
 
-    def get_author(self):
-        return self._author
+    def is_ripe(self):
+        return self._state == 3
 
-    def set_author(self, author):
-        self._author = author
 
-    def info(self):
-        print(f"Book Title: {self._title}")
-        print(f"Author: {self._author}")
+class TomatoBush:
+    def __init__(self, num_tomatoes): # Инициализация куста помидоров с заданным количеством помидоров
+        self.tomatoes = [Tomato(index) for index in range(1, num_tomatoes + 1)]
 
-class EBook(Book):
-    def __init__(self, title, author, format):
-        super().__init__(title, author)
-        self._format = format
+    def grow_all(self): # Выращивает все помидоры на кусте
+        for tomato in self.tomatoes:
+            tomato.grow()
 
-    def get_format(self):
-        return self._format
+    def all_are_ripe(self):  # Проверяет, все ли помидоры созрели
+        return all(tomato.is_ripe() for tomato in self.tomatoes)
 
-    def set_format(self, format):
-        self._format = format
+    def give_away_all(self):  # Удаляет все помидоры с куста (симулирует сбор урожая)
+        self.tomatoes = []
 
-    def info(self):
-        super().info()
-        print(f"Format: {self.get_format()}")
 
-my_ebook = EBook("Anna Carenina", "Tolstoi", "PDF")
+class Gardener:
+    def __init__(self, name, plant): # Инициализация садовода с именем и растением
+        self.name = name
+        self._plant = plant
 
-my_ebook.set_title("New Title")
+    def work(self):
+        self._plant.grow_all()
 
-my_ebook.info()
+    def harvest(self):
+        if self._plant.all_are_ripe():
+            print("Сбор урожая...")
+            self._plant.give_away_all()
+        else:
+            print("Помидоры не созрели. Продолжай выращивать.")
+
+    @staticmethod
+    def knowledge_base():
+        print("База знаний садовода:")
+        print("- Поливай растения регулярно.")
+        print("- Нужно больше солнечнного света.")
+        print("- ИСпользуй удобрение для улучшение почвы.")
+
+# Создаем объекты классов TomatoBush и Gardener
+tomato_bush = TomatoBush(num_tomatoes=5)
+gardener = Gardener(name="John", plant=tomato_bush)
+# Попробуем собрать урожай, когда томаты еще не дозрели
+gardener.harvest()
+
+# Ухаживаем за кустом с помидорами
+gardener.work()
+gardener.work()
+gardener.work()
+
+# Собираем урожай
+gardener.harvest()
 ```
 #### Результат:
-![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema8.9.png)
+![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema9.11.png)
 
-#### Вывод: Атрибуты title, author и format закрытыми (приватными) и предоставим методы для получения и установки этих значений. Таким образом, мы скрываем прямой доступ к атрибутам и обеспечиваем контролируемый доступ к данным.
+#### Вывод: В данном коде реализована система для моделирования ухода за кустом помидоров с использованием классов Tomato, TomatoBush и Gardener. Садовод по имени "John" сначала пытается собрать урожай до того, как помидоры полностью созреют, и получает сообщение о том, что сбор урожая невозможен. Затем он ухаживает за кустом три раза, что способствует росту помидоров. После этого садовод снова пытается собрать урожай
 
 ## Задание №5
-### Самостоятельно реализуйте полиморфизм. Он должен отличаться, от того, что указан в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
+### Соберите урожай
 #### Выполнение:
 ```python
-class Book:
-    def __init__(self, title, author):
-        self._title = title
-        self._author = author
+class Tomato: # Словарь, описывающий состояния помидора
+    states = {
+        0: "отсутствует",
+        1: "цветение",
+        2: "зеленый",
+        3: "красный"
+    }
 
-    def get_title(self):
-        return self._title
+    def __init__(self, index): # Инициализация экземпляра помидора с индексом и начальным состоянием
+        self._index = index
+        self._state = 0
 
-    def set_title(self, title):
-        self._title = title
+    def grow(self): # Увеличивает состояние помидора на один, если оно меньше трех
+        if self._state < 3:
+            self._state += 1
 
-    def get_author(self):
-        return self._author
+    def is_ripe(self):
+        return self._state == 3
 
-    def set_author(self, author):
-        self._author = author
 
-    def info(self):
-        print(f"Book Title: {self._title}")
-        print(f"Author: {self._author}")
+class TomatoBush:
+    def __init__(self, num_tomatoes): # Инициализация куста помидоров с заданным количеством помидоров
+        self.tomatoes = [Tomato(index) for index in range(1, num_tomatoes + 1)]
 
-    def read(self):
-        print("Reading a physical book.")
+    def grow_all(self): # Выращивает все помидоры на кусте
+        for tomato in self.tomatoes:
+            tomato.grow()
 
-class EBook(Book):
-    def __init__(self, title, author, format):
-        super().__init__(title, author)
-        self._format = format
+    def all_are_ripe(self):  # Проверяет, все ли помидоры созрели
+        return all(tomato.is_ripe() for tomato in self.tomatoes)
 
-    def get_format(self):
-        return self._format
+    def give_away_all(self):  # Удаляет все помидоры с куста (симулирует сбор урожая)
+        self.tomatoes = []
 
-    def set_format(self, format):
-        self._format = format
 
-    def info(self):
-        super().info()
-        print(f"Format: {self.get_format()}")
+class Gardener:
+    def __init__(self, name, plant): # Инициализация садовода с именем и растением
+        self.name = name
+        self._plant = plant
 
-    def read(self):
-        print("Reading an ebook.")
+    def work(self):
+        self._plant.grow_all()
 
-my_book = Book("Anna Carenina", "Tolstoi")
-my_ebook = EBook("Padenie", "Kamu", "PDF")
+    def harvest(self):
+        if self._plant.all_are_ripe():
+            print("Сбор урожая...")
+            self._plant.give_away_all()
+        else:
+            print("Помидоры не созрели. Продолжай выращивать.")
 
-my_book.read()
-my_ebook.read()
+    @staticmethod
+    def knowledge_base():
+        print("База знаний садовода:")
+        print("- Поливай растения регулярно.")
+        print("- Нужно больше солнечнного света.")
+        print("- ИСпользуй удобрение для улучшение почвы.")
+
+# Создаем объекты классов TomatoBush и Gardener
+tomato_bush = TomatoBush(num_tomatoes=5)
+gardener = Gardener(name="John", plant=tomato_bush)
+# Попробуем собрать урожай, когда томаты еще не дозрели
+gardener.harvest()
+
+# Ухаживаем за кустом с помидорами
+gardener.work()
+gardener.work()
+gardener.work()
+
+# Собираем урожай
+gardener.harvest()
+# Собираем урожай
+gardener.harvest()
+
+# Выводим информацию о зрелости томатов в кусте после сбора урожая
+print("\nAre all tomatoes ripe?", gardener._plant.all_are_ripe())
+
+# Проверяем состояние каждого томата после сбора урожая
+for i, tomato in enumerate(gardener._plant.tomatoes, 1):
+    print(f"Tomato {i}: State - {Tomato.states[tomato._state]}, Ripe - {tomato.is_ripe()}")
 ```
 #### Результат:
-![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema8.10.png)
+![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema9.12.png)
+![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema9.13.png)
 
-#### Вывод: Использованн полиморфизм, где метод read представляет общий интерфейс для чтения книг, но каждый подкласс (Book и EBook) предоставляет свою уникальную реализацию этого метода.
-## Общий вывод: Объектно-ориентированное программирование (ООП) в Python, как и в других языках, предлагает множество преимуществ и инструментов, которые делают процесс разработки программ более удобным и эффективным.
+#### Вывод: В конце программы выводится информация о состоянии каждого помидора, что позволяет увидеть, как изменилось их состояние в процессе работы. Этот код не только демонстрирует принципы ООП, такие как инкапсуляция и взаимодействие объектов, но и учит важным жизненным урокам о терпении, внимании к деталям и необходимости заботы о том, что мы хотим вырастить.
+##### Вывод: Объектно-ориентированное программирование (ООП) в Python, как и в других языках программирования, предоставляет ряд преимуществ и инструментов для более удобной и эффективной разработки программ.
