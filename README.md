@@ -253,20 +253,18 @@ def read_file(file_path):
                 print("Информация из файла:")
                 print(content)
     except FileNotFoundError:
-        print(f"Файл '{file_path}' не найден")
+        print(f"Файл 'file_path' не найден")
     except Exception as e:
-        print(f"Исключение: {e}")
+        print(f"Исключение: e")
 
-if __name__ == '__main__':
-    # Пример использования для пустого файла
+if __name__ == '__main__':  
     print("Для пустого файла:")
-    read_file('empty_file.txt')
+    read_file('input.txt')  
 
-    print("\n" + "="*30 + "\n")
+    print("" + "=" * 30 + "")
 
-    # Пример использования для файла с информацией
     print("Для файла с информацией:")
-    read_file('non_empty_file.txt')
+    read_file('input.txt')  
 ```
 #### Результат:
 ![Меню](https://github.com/Knysha04/SoftwareEngineering/blob/main/pic/Tema10.7.png)
